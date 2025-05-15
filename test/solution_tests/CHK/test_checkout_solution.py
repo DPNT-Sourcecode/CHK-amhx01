@@ -25,5 +25,3 @@ class TestCheckout():
 
     def test_checkout_with_get_one_free_deal(self):
         assert CheckoutSolution().checkout('EEB') == 80
-
-

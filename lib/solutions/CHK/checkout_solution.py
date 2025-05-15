@@ -46,5 +46,5 @@ class CheckoutSolution:
             return  normal_value + offer_value
 
 
-
-
+        
+CheckoutSolution().checkout(['EEB'])
