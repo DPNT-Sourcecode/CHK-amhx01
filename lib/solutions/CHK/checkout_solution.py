@@ -13,22 +13,17 @@ class CheckoutSolution:
             total_value = 0
             for sku in skus:
                 if sku in standard_items:
-                    total_value += 20
-                elif sku == 'D':
-                    total_value += 15
+                    total_value += standard_items[sku]
                 else:
                     sku_count_dict[sku] +=1
-        except Exception:
-            return -1
+        except Exception as e:
+            return e
 
         sku_count_dict = self.edit_dict_for_gof_deal(sku_count_dict['E'], 2, 'B', sku_count_dict)
         total_value += self.get_value_for_special_offers(130, 3, 50, sku_count_dict['A'])
         total_value+= self.get_value_for_special_offers(45, 2, 30, sku_count_dict['B'])
 
         return total_value
-    
-    def get_price_for_item_with_no_offer(self, amount: int, price: int) -> int:
-        return amount * price
     
     def edit_dict_for_gof_deal(self, amount:int, offer_amount:int, free_item: str, dict_result: dict)->dict:
         free_items_amount = amount // offer_amount
@@ -45,3 +40,4 @@ class CheckoutSolution:
 
 
         
+
