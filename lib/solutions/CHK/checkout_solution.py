@@ -24,7 +24,7 @@ class CheckoutSolution:
                 for string in skus:
                     sku_special_items_count_dict, total_value = self.sort_data_from_string(string, valid_items, standard_items, sku_special_items_count_dict, total_value)
             else: 
-                sku_special_items_count_dict, total_value = self.sort_data_from_string(string, valid_items, standard_items, sku_special_items_count_dict)
+                sku_special_items_count_dict, total_value = self.sort_data_from_string(skus, valid_items, standard_items, sku_special_items_count_dict, total_value)
 
         except Exception as e:
             return -1
@@ -61,21 +61,6 @@ class CheckoutSolution:
             total += num_groups * pricing_rule[group_size]
             remaining = remaining % group_size
         return total
-
-
-        # if amount == 0:
-        #     return 0
-        # if amount < offer_amount:
-        #     return amount * normal_value
-        # else:
-        #     for offer_amount in offer_amounts:
-        #         if amount > offer_amount:
-        #             offer_value = amount // offer_amount * special_value
-        #             normal_value = amount % offer_amount * normal_value
-        #         else
-        #     offer_value = amount // offer_amount * special_value
-        #     normal_value = amount % offer_amount * normal_value
-        #     return  normal_value + offer_value
 
 
         
