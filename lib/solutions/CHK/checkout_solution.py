@@ -30,8 +30,8 @@ class CheckoutSolution:
             return -1
         
         sku_special_items_count_dict = self.edit_dict_for_gof_deal(sku_special_items_count_dict['E'], 2, 'B', sku_special_items_count_dict)
-        total_value += self.get_value_for_special_offers(130, [5, 3], 50, sku_special_items_count_dict['A']) # make sure larger offer amount comes first
-        total_value+= self.get_value_for_special_offers(45, [2], 30, sku_special_items_count_dict['B'])
+        total_value += self.get_value_for_special_offers(130, [5, 3], 50, sku_special_items_count_dict['A'], a_pricing_rules) # make sure larger offer amount comes first
+        total_value+= self.get_value_for_special_offers(45, [2], 30, sku_special_items_count_dict['B'], b_pricing_rules)
 
         return total_value
     
@@ -53,22 +53,31 @@ class CheckoutSolution:
         return dict_result
 
     
-    def get_value_for_special_offers(self, special_value: int, offer_amounts: list, normal_value: int, amount: int) -> int:
-        if amount == 0:
-            return 0
-        if amount < offer_amount:
-            return amount * normal_value
-        else:
-            for offer_amount in offer_amounts:
-                if amount > offer_amount:
-                    offer_value = amount // offer_amount * special_value
-                    normal_value = amount % offer_amount * normal_value
-                else
-            offer_value = amount // offer_amount * special_value
-            normal_value = amount % offer_amount * normal_value
-            return  normal_value + offer_value
+    def get_value_for_special_offers(self, special_value: int, offer_amounts: list, normal_value: int, amount: int, pricing_rule: dict) -> int:
+
+        remaining = amount
+        for group_size in sorted(pricing_rule.keys(), reverse=True):
+            num_groups = remaining // group_size
+            total += num_groups * pricing_rule[group_size]
+            remaining = remaining % group_size
+
+
+        # if amount == 0:
+        #     return 0
+        # if amount < offer_amount:
+        #     return amount * normal_value
+        # else:
+        #     for offer_amount in offer_amounts:
+        #         if amount > offer_amount:
+        #             offer_value = amount // offer_amount * special_value
+        #             normal_value = amount % offer_amount * normal_value
+        #         else
+        #     offer_value = amount // offer_amount * special_value
+        #     normal_value = amount % offer_amount * normal_value
+        #     return  normal_value + offer_value
 
 
         
 CheckoutSolution().checkout(['EEB'])
+
 
