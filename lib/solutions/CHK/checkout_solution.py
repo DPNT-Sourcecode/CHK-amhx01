@@ -125,8 +125,3 @@ class CheckoutSolution:
     
 
 CheckoutSolution().checkout(['NNNM'])
-
-
-
-
-
