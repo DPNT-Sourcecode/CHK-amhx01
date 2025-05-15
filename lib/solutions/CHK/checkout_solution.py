@@ -110,6 +110,7 @@ class CheckoutSolution:
         total_value+= self.get_value_for_special_offers(sku_special_items_count_dict['P'], p_pricing_rules)
         total_value+= self.get_value_for_special_offers(sku_special_items_count_dict['Q'], q_pricing_rules)
         total_value+= self.get_value_for_special_offers(sku_special_items_count_dict['V'], v_pricing_rules)
+        total_value+= self.price_combo_letters(combo_letter_count_dict, price_combo_letter_dict_values)
 
         return total_value
     
@@ -122,13 +123,13 @@ class CheckoutSolution:
         sorted_letters = sorted(price_combo_letter_dict_values.items(), key=lambda x: -x[1])
 
         num_groups = total_letters // 3
-
+        total = 0
         for num in range(num_groups):
             group = []
             for letter in sorted_letters:
-                while combo_dict[letter] > 0 and len(group) < 3:
+                while combo_dict[letter[0]] > 0 and len(group) < 3:
                     group.append(letter)
-                    combo_dict[letter] -= 1
+                    combo_dict[letter[0]] -= 1
                 if len(group) == 3:
                     break
             total += 45  # Add combo price
