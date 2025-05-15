@@ -4,7 +4,7 @@ from lib.solutions.CHK.checkout_solution import CheckoutSolution
 class TestCheckout():
     def test_incorrect_input_returns_negative_one(self):
         assert CheckoutSolution().checkout('1') == -1
-        
+
     def test_checkout_for_singular_item(self):
         assert CheckoutSolution().checkout('A') == 50
 
@@ -16,3 +16,7 @@ class TestCheckout():
 
     def test_checkouts_with_special_prices_and_extra(self):
         assert CheckoutSolution().checkout('AAAA') == 180
+
+    def test_checkout_with_lowercase(self):
+        assert CheckoutSolution().checkout('a') == 50
+

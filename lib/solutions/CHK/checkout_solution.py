@@ -3,6 +3,7 @@ class CheckoutSolution:
 
     # skus = unicode string
     def checkout(self, skus):
+        skus = skus.upper()
         try:
             sku_count_dict = {
                 'A': 0,
@@ -34,3 +35,4 @@ class CheckoutSolution:
 
 
         
+
