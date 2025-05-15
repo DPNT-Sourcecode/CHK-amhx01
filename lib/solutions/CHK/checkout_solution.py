@@ -1,4 +1,3 @@
-
 class CheckoutSolution:
 
     # skus = unicode string
@@ -42,6 +41,7 @@ class CheckoutSolution:
 
 
         
+#CheckoutSolution().checkout('a')
 
 
 
