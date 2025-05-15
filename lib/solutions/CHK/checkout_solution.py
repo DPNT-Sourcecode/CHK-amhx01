@@ -170,6 +170,3 @@ class CheckoutSolution:
             total += num_groups * pricing_rule[group_size]
             remaining = remaining % group_size
         return total
-    
-
-CheckoutSolution().checkout(['STX'])

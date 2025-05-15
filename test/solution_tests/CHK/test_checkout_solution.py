@@ -46,3 +46,9 @@ class TestCheckout():
 
     def test_three_u_get_one_u_free(self):
         assert CheckoutSolution().checkout('UUUU') == 120
+
+    def test_three_in_group_deal(self):
+        assert CheckoutSolution().checkout(['STX']) == 45
+    
+    def two_over_three_in_group_deal(self):
+        CheckoutSolution().checkout(['STXZZ']) == 82
