@@ -42,7 +42,7 @@ class TestCheckout():
         assert CheckoutSolution().checkout(['NNNM']) == 120
     
     def test_two_k_150(self):
-        assert CheckoutSolution().checkout('KK') == 150
+        assert CheckoutSolution().checkout('KK') == 120
 
     def test_three_u_get_one_u_free(self):
         assert CheckoutSolution().checkout('UUUU') == 120
@@ -52,3 +52,9 @@ class TestCheckout():
     
     def two_over_three_in_group_deal(self):
         CheckoutSolution().checkout(['STXZZ']) == 82
+
+    def test_the_alphabet(self):
+        CheckoutSolution().checkout(["ABCDEFGHIJKLMNOPQRSTUVW"]) == 805
+
+    def test_just_k(self):
+        CheckoutSolution().checkout(["K"]) == 70

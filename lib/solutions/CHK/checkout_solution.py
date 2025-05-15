@@ -21,8 +21,8 @@ class CheckoutSolution:
                 10: 80
             }
             k_pricing_rules = {
-                1: 80,
-                2: 150
+                1: 70,
+                2: 120
             }
             m_pricing_rules = {
                 1: 15
