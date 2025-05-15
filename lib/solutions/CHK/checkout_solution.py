@@ -18,7 +18,7 @@ class CheckoutSolution:
                     sku_special_items_count_dict[sku] +=1
         except Exception as e:
             return e
-
+        
         sku_special_items_count_dict = self.edit_dict_for_gof_deal(sku_special_items_count_dict['E'], 2, 'B', sku_special_items_count_dict)
         total_value += self.get_value_for_special_offers(130, 3, 50, sku_special_items_count_dict['A'])
         total_value+= self.get_value_for_special_offers(45, 2, 30, sku_special_items_count_dict['B'])
@@ -42,5 +42,6 @@ class CheckoutSolution:
 
 
         
+
 
 
