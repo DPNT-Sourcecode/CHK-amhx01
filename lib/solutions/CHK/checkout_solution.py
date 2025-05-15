@@ -19,7 +19,7 @@ class CheckoutSolution:
                 'E': 0,
                 'F': 0,
             }
-            standard_items = {'C':20, 'D': 15, 'E': 40}
+            standard_items = {'C':20, 'D': 15, 'E': 40, 'F': 10}
             total_value = 0
             if type(skus) == list:
                 for string in skus:
@@ -30,6 +30,7 @@ class CheckoutSolution:
         except Exception as e:
             return -1
         
+        sku_special_items_count_dict = self.edit_dict_for_gof_deal(sku_special_items_count_dict['F'], 3, 'F', sku_special_items_count_dict)
         sku_special_items_count_dict = self.edit_dict_for_gof_deal(sku_special_items_count_dict['E'], 2, 'B', sku_special_items_count_dict)
         total_value += self.get_value_for_special_offers(130, [5, 3], 50, sku_special_items_count_dict['A'], a_pricing_rules) # make sure larger offer amount comes first
         total_value+= self.get_value_for_special_offers(45, [2], 30, sku_special_items_count_dict['B'], b_pricing_rules)
@@ -62,3 +63,6 @@ class CheckoutSolution:
             total += num_groups * pricing_rule[group_size]
             remaining = remaining % group_size
         return total
+    
+
+CheckoutSolution().checkout(['FFF'])

@@ -29,5 +29,11 @@ class TestCheckout():
     def test_checkout_with_list_containing_string(self):
         assert CheckoutSolution().checkout(['AAAAA']) == 200
 
-    def test_checkout_with_list_containing_string(self):
+    def test_checkout_with_list_containing_string_and_list_two_special_items(self):
         assert CheckoutSolution().checkout(['EE']) == 80
+
+    def test_checkout_with_2_fs(self):
+        assert CheckoutSolution().checkout(['FF']) == 20
+    
+    def test_checkout_with_list_containing_string_and_3fs_one_free(self):
+        assert CheckoutSolution().checkout(['FFF']) == 20
