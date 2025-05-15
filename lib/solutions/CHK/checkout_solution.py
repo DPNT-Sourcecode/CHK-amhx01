@@ -11,13 +11,12 @@ class CheckoutSolution:
             }
             standard_items = {'C':20, 'D': 15, 'E': 40}
             total_value = 0
-            for sku in skus:
-                if sku not in valid_items:
-                    return -1
-                if sku in standard_items:
-                    total_value += standard_items[sku]
-                if sku in sku_special_items_count_dict:
-                    sku_special_items_count_dict[sku] +=1
+            if type(skus) == list:
+                for string in skus:
+                    sku_special_items_count_dict, total_value = self.sort_data_from_string(string, valid_items, standard_items, sku_special_items_count_dict)
+            else: 
+                sku_special_items_count_dict, total_value = self.sort_data_from_string(string, valid_items, standard_items, sku_special_items_count_dict)
+
         except Exception as e:
             return -1
         
@@ -26,6 +25,16 @@ class CheckoutSolution:
         total_value+= self.get_value_for_special_offers(45, 2, 30, sku_special_items_count_dict['B'])
 
         return total_value
+    
+    def sort_data_from_string(self, skus:str, valid_items: list, standard_items: dict, sku_special_items_count_dict: dict, total_value: int):
+        for sku in skus:
+            if sku not in valid_items:
+                return -1
+            if sku in standard_items:
+                total_value += standard_items[sku]
+            if sku in sku_special_items_count_dict:
+                sku_special_items_count_dict[sku] +=1
+        return sku_special_items_count_dict, total_value
     
     def edit_dict_for_gof_deal(self, amount:int, offer_amount:int, free_item: str, dict_result: dict)->dict:
         if amount == 0:
