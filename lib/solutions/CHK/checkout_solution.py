@@ -15,14 +15,19 @@ class CheckoutSolution:
             f_pricing_rules = {
                 1:10
             }
-            valid_items = ['A', 'B', 'C', 'D', 'E', 'F']
+            h_pricing_rules = {
+                1: 10,
+                5: 45,
+                10: 80
+            }
+            valid_items = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z']
             sku_special_items_count_dict = {
                 'A': 0,
                 'B': 0,
                 'E': 0,
                 'F': 0,
             }
-            standard_items = {'C':20, 'D': 15, 'E': 40}
+            standard_items = {'C':20, 'D': 15, 'E': 40, 'G': 20, ''}
             total_value = 0
             if type(skus) == list:
                 for string in skus:
