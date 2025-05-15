@@ -46,7 +46,7 @@ class CheckoutSolution:
         return sku_special_items_count_dict, total_value
     
     def edit_dict_for_gof_deal(self, amount:int, offer_amount:int, free_item: str, dict_result: dict)->dict:
-        if amount == 0:
+        if amount == 0 or dict_result[free_item] == 0:
             return dict_result
         free_items_amount = amount // offer_amount
         dict_result[free_item]= dict_result[free_item] - free_items_amount
@@ -61,7 +61,3 @@ class CheckoutSolution:
             total += num_groups * pricing_rule[group_size]
             remaining = remaining % group_size
         return total
-
-
-        
-CheckoutSolution().checkout('A')

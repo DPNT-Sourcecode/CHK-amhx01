@@ -28,3 +28,6 @@ class TestCheckout():
 
     def test_checkout_with_list_containing_string(self):
         assert CheckoutSolution().checkout(['AAAAA']) == 200
+
+    def test_checkout_with_list_containing_string(self):
+        assert CheckoutSolution().checkout(['EE']) == 80
