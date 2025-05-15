@@ -22,7 +22,7 @@ class CheckoutSolution:
             total_value = 0
             if type(skus) == list:
                 for string in skus:
-                    sku_special_items_count_dict, total_value = self.sort_data_from_string(string, valid_items, standard_items, sku_special_items_count_dict)
+                    sku_special_items_count_dict, total_value = self.sort_data_from_string(string, valid_items, standard_items, sku_special_items_count_dict, total_value)
             else: 
                 sku_special_items_count_dict, total_value = self.sort_data_from_string(string, valid_items, standard_items, sku_special_items_count_dict)
 
@@ -54,12 +54,13 @@ class CheckoutSolution:
 
     
     def get_value_for_special_offers(self, special_value: int, offer_amounts: list, normal_value: int, amount: int, pricing_rule: dict) -> int:
-
+        total = 0
         remaining = amount
         for group_size in sorted(pricing_rule.keys(), reverse=True):
             num_groups = remaining // group_size
             total += num_groups * pricing_rule[group_size]
             remaining = remaining % group_size
+        return total
 
 
         # if amount == 0:
@@ -78,6 +79,4 @@ class CheckoutSolution:
 
 
         
-CheckoutSolution().checkout(['EEB'])
-
-
+CheckoutSolution().checkout('A')
