@@ -35,6 +35,9 @@ class CheckoutSolution:
                 1: 30,
                 3: 80
             }
+            u_pricing_rules = {
+                1: 40
+            }
             valid_items = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z']
             sku_special_items_count_dict = {
                 'A': 0,
@@ -44,8 +47,9 @@ class CheckoutSolution:
                 'M': 0,
                 'P': 0,
                 'Q': 0,
+                'U': 0,
             }
-            standard_items = {'C':20, 'D': 15, 'E': 40, 'G': 20, 'I': 35, 'J': 60,'L': 90, 'N': 40, 'O': 10, }
+            standard_items = {'C':20, 'D': 15, 'E': 40, 'G': 20, 'I': 35, 'J': 60,'L': 90, 'N': 40, 'O': 10, 'R': 50, 'S': 30, 'T': 20,}
             total_value = 0
             if type(skus) == list:
                 for string in skus:
@@ -56,6 +60,8 @@ class CheckoutSolution:
         except Exception as e:
             return -1
         
+        sku_special_items_count_dict = self.edit_dict_for_gof_deal(sku_special_items_count_dict['U'], 3, 'U', sku_special_items_count_dict)
+        sku_special_items_count_dict = self.edit_dict_for_gof_deal(sku_special_items_count_dict['R'], 3, 'Q', sku_special_items_count_dict)
         sku_special_items_count_dict = self.edit_dict_for_gof_deal(sku_special_items_count_dict['F'], 3, 'F', sku_special_items_count_dict)
         sku_special_items_count_dict = self.edit_dict_for_gof_deal(sku_special_items_count_dict['N'], 3, 'M', sku_special_items_count_dict)
         sku_special_items_count_dict = self.edit_dict_for_gof_deal(sku_special_items_count_dict['E'], 2, 'B', sku_special_items_count_dict)
@@ -66,6 +72,7 @@ class CheckoutSolution:
         total_value+= self.get_value_for_special_offers(sku_special_items_count_dict['H'], h_pricing_rules)
         total_value+= self.get_value_for_special_offers(sku_special_items_count_dict['K'], k_pricing_rules)
         total_value+= self.get_value_for_special_offers(sku_special_items_count_dict['P'], p_pricing_rules)
+        total_value+= self.get_value_for_special_offers(sku_special_items_count_dict['Q'], q_pricing_rules)
 
         return total_value
     
@@ -98,5 +105,6 @@ class CheckoutSolution:
     
 
 CheckoutSolution().checkout(['FFF'])
+
 
 
