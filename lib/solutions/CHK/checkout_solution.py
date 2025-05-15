@@ -3,6 +3,15 @@ class CheckoutSolution:
     # skus = unicode string
     def checkout(self, skus):
         try:
+            a_pricing_rules = {
+                1: 50,
+                3: 130,
+                5: 200
+            }
+            b_pricing_rules = {
+                1: 30,
+                2: 45
+            }
             valid_items = ['A', 'B', 'C', 'D', 'E']
             sku_special_items_count_dict = {
                 'A': 0,
@@ -21,7 +30,7 @@ class CheckoutSolution:
             return -1
         
         sku_special_items_count_dict = self.edit_dict_for_gof_deal(sku_special_items_count_dict['E'], 2, 'B', sku_special_items_count_dict)
-        total_value += self.get_value_for_special_offers(130, [3, 5], 50, sku_special_items_count_dict['A'])
+        total_value += self.get_value_for_special_offers(130, [5, 3], 50, sku_special_items_count_dict['A']) # make sure larger offer amount comes first
         total_value+= self.get_value_for_special_offers(45, [2], 30, sku_special_items_count_dict['B'])
 
         return total_value
@@ -44,12 +53,17 @@ class CheckoutSolution:
         return dict_result
 
     
-    def get_value_for_special_offers(self, special_values: list, offer_amount: int, normal_value: int, amount: int) -> int:
+    def get_value_for_special_offers(self, special_value: int, offer_amounts: list, normal_value: int, amount: int) -> int:
         if amount == 0:
             return 0
         if amount < offer_amount:
             return amount * normal_value
         else:
+            for offer_amount in offer_amounts:
+                if amount > offer_amount:
+                    offer_value = amount // offer_amount * special_value
+                    normal_value = amount % offer_amount * normal_value
+                else
             offer_value = amount // offer_amount * special_value
             normal_value = amount % offer_amount * normal_value
             return  normal_value + offer_value
@@ -57,3 +71,4 @@ class CheckoutSolution:
 
         
 CheckoutSolution().checkout(['EEB'])
+
