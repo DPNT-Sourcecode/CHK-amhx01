@@ -3,10 +3,6 @@ class CheckoutSolution:
 
     # skus = unicode string
     def checkout(self, skus):
-        if type(skus) == str:
-            skus = skus.upper()
-        else:
-            is_list = True
         try:
             sku_count_dict = {
                 'A': 0,
@@ -14,16 +10,14 @@ class CheckoutSolution:
             }
             total_value = 0
             for sku in skus:
-                if is_list:
-                    sku = sku.upper()
                 if sku == 'C':
                     total_value += 20
                 elif sku == 'D':
                     total_value += 15
                 else:
                     sku_count_dict[sku] +=1
-        except Exception:
-            return -1
+        except Exception as e:
+            return e
 
         total_value += self.get_value_for_special_offers(130, 3, 50, sku_count_dict['A'])
         total_value+= self.get_value_for_special_offers(45, 2, 30, sku_count_dict['B'])
@@ -40,5 +34,6 @@ class CheckoutSolution:
 
 
         
+
 
 
