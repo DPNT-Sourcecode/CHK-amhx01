@@ -12,11 +12,12 @@ class CheckoutSolution:
                 1: 30,
                 2: 45
             }
-            valid_items = ['A', 'B', 'C', 'D', 'E']
+            valid_items = ['A', 'B', 'C', 'D', 'E', 'F']
             sku_special_items_count_dict = {
                 'A': 0,
                 'B': 0,
                 'E': 0,
+                'F': 0,
             }
             standard_items = {'C':20, 'D': 15, 'E': 40}
             total_value = 0
