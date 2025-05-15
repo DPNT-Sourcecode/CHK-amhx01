@@ -3,6 +3,7 @@ class CheckoutSolution:
     # skus = unicode string
     def checkout(self, skus):
         try:
+            valid_items = ['A', 'B', 'C', 'D', 'E']
             sku_special_items_count_dict = {
                 'A': 0,
                 'B': 0,
@@ -11,6 +12,8 @@ class CheckoutSolution:
             standard_items = {'C':20, 'D': 15, 'E': 40}
             total_value = 0
             for sku in skus:
+                if sku not in valid_items:
+                    return -1
                 if sku in standard_items:
                     total_value += standard_items[sku]
                 if sku in sku_special_items_count_dict:
@@ -43,7 +46,7 @@ class CheckoutSolution:
 
 
         
-CheckoutSolution().checkout('1')
+CheckoutSolution().checkout('ABCD')
 
 
 
