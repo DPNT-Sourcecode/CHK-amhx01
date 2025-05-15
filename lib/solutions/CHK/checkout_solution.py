@@ -83,12 +83,15 @@ class CheckoutSolution:
             total_value = 0
             if type(skus) == list:
                 for string in skus:
-                    sku_special_items_count_dict, total_value = self.sort_data_from_string(string, valid_items, standard_items, sku_special_items_count_dict, combo_letter_count_dict, total_value)
+                    special_and_combo_dict, total_value = self.sort_data_from_string(string, valid_items, standard_items, sku_special_items_count_dict, combo_letter_count_dict, total_value)
             else: 
-                sku_special_items_count_dict, total_value = self.sort_data_from_string(skus, valid_items, standard_items, sku_special_items_count_dict, combo_letter_count_dict, total_value)
+                special_and_combo_dict, total_value = self.sort_data_from_string(skus, valid_items, standard_items, sku_special_items_count_dict, combo_letter_count_dict, total_value)
 
         except Exception as e:
             return -1
+        
+        sku_special_items_count_dict = special_and_combo_dict['special_dict']
+        combo_letter_count_dict = special_and_combo_dict['combo_dict']
         
         sku_special_items_count_dict = self.edit_dict_for_gof_deal(sku_special_items_count_dict['U'], 4, 'U', sku_special_items_count_dict)
         sku_special_items_count_dict = self.edit_dict_for_gof_deal(sku_special_items_count_dict['R'], 3, 'Q', sku_special_items_count_dict)
@@ -120,7 +123,9 @@ class CheckoutSolution:
                 sku_special_items_count_dict[sku] +=1
             if sku in combo_count_letter_dict:
                 combo_count_letter_dict +=1
-        return sku_special_items_count_dict, total_value
+
+        
+        return {'special_dict': sku_special_items_count_dict, 'combo_dict': combo_count_letter_dict}, total_value
     
     def edit_dict_for_gof_deal(self, amount:int, offer_amount:int, free_item: str, dict_result: dict)->dict:
         if amount == 0 or dict_result[free_item] == 0:
@@ -141,3 +146,4 @@ class CheckoutSolution:
     
 
 CheckoutSolution().checkout(['NNNM'])
+
