@@ -10,6 +10,8 @@ class CheckoutSolution:
             'D': 0
         }
         for sku in skus:
-            
+            sku_count_dict[sku] +=1
+
+        
 
 
