@@ -20,3 +20,7 @@ class TestCheckout():
     def test_checkout_with_lowercase(self):
         assert CheckoutSolution().checkout('a') == 50
 
+    def test_checkout_with_array(self):
+        assert CheckoutSolution().checkout(['a']) == 50
+
+

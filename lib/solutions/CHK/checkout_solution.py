@@ -3,7 +3,10 @@ class CheckoutSolution:
 
     # skus = unicode string
     def checkout(self, skus):
-        skus = skus.upper()
+        if type(skus) == str:
+            skus = skus.upper()
+        else:
+            is_list = True
         try:
             sku_count_dict = {
                 'A': 0,
@@ -11,6 +14,8 @@ class CheckoutSolution:
             }
             total_value = 0
             for sku in skus:
+                if is_list:
+                    sku = sku.upper()
                 if sku == 'C':
                     total_value += 20
                 elif sku == 'D':
@@ -35,4 +40,5 @@ class CheckoutSolution:
 
 
         
+
 
