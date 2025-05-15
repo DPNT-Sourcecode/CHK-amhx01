@@ -70,4 +70,3 @@ class CheckoutSolution:
     
 
 CheckoutSolution().checkout(['FFF'])
-
