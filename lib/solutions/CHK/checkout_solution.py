@@ -16,8 +16,8 @@ class CheckoutSolution:
                     total_value += 15
                 else:
                     sku_count_dict[sku] +=1
-        except Exception as e:
-            return e
+        except Exception:
+            return -1
 
         total_value += self.get_value_for_special_offers(130, 3, 50, sku_count_dict['A'])
         total_value+= self.get_value_for_special_offers(45, 2, 30, sku_count_dict['B'])
@@ -34,6 +34,7 @@ class CheckoutSolution:
 
 
         
+
 
 
 

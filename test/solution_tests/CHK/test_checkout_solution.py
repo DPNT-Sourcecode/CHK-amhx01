@@ -18,9 +18,10 @@ class TestCheckout():
         assert CheckoutSolution().checkout('AAAA') == 180
 
     def test_checkout_with_lowercase(self):
-        assert CheckoutSolution().checkout('a') == 50
+        assert CheckoutSolution().checkout('a') == -1
 
     def test_checkout_with_array(self):
-        assert CheckoutSolution().checkout(['a']) == 50
+        assert CheckoutSolution().checkout(['a']) == -1
+
 
 
