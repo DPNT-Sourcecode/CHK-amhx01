@@ -6,12 +6,20 @@ class CheckoutSolution:
         sku_count_dict = {
             'A': 0,
             'B': 0,
-            'C': 0,
-            'D': 0
         }
+        total_value = 0
         for sku in skus:
-            sku_count_dict[sku] +=1
+            if sku == 'C':
+                total_value += 20
+            elif sku == 'D':
+                total_value += 15
+            else:
+                sku_count_dict[sku] +=1
+            
+            
+
 
         
+
 
 
