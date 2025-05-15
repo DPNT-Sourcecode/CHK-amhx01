@@ -25,3 +25,6 @@ class TestCheckout():
 
     def test_checkout_with_get_one_free_deal(self):
         assert CheckoutSolution().checkout('EEB') == 80
+
+    def test_checkout_with_list_containing_string(self):
+        assert CheckoutSolution().checkout(['AAAAA']) == 200
