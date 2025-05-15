@@ -23,18 +23,20 @@ class CheckoutSolution:
             a_normal_value = sku_count_dict['A'] % 3 * 50
             total_value = total_value + a_normal_value + a_offer_value
         
-        if sku_count_dict['B'] < 2:
-            total_value += sku_count_dict['B'] * 30
-        else:
-            b_offer_value = sku_count_dict['A'] // 3 * 45
-            b_normal_value = sku_count_dict['A'] % 2 * 30
-            total_value = total_value + b_normal_value + b_offer_value
 
         return total_value
-            
+    
+    def get_value_for_special_offers(special_value: int, offer_amount: int, normal_value: int, amount: int) -> int:
+        if amount < offer_amount:
+            return amount * normal_value
+        else:
+            offer_value = amount // offer_amount * special_value
+            normal_value = amount % offer_amount * normal_value
+            return  normal_value + offer_value
 
 
         
+
 
 
 
