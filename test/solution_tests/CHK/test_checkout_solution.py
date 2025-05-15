@@ -22,6 +22,3 @@ class TestCheckout():
 
     def test_checkout_with_array(self):
         assert CheckoutSolution().checkout(['a']) == -1
-
-
-
