@@ -24,5 +24,6 @@ class TestCheckout():
         assert CheckoutSolution().checkout(['a']) == -1
 
     def test_checkout_with_get_one_free_deal(self):
-        assert CheckoutSolution().checkout(['EEB']) == 80
+        assert CheckoutSolution().checkout('EEB') == 80
+
 
