@@ -76,7 +76,7 @@ class CheckoutSolution:
         except Exception as e:
             return -1
         
-        sku_special_items_count_dict = self.edit_dict_for_gof_deal(sku_special_items_count_dict['U'], 3, 'U', sku_special_items_count_dict)
+        sku_special_items_count_dict = self.edit_dict_for_gof_deal(sku_special_items_count_dict['U'], 4, 'U', sku_special_items_count_dict)
         sku_special_items_count_dict = self.edit_dict_for_gof_deal(sku_special_items_count_dict['R'], 3, 'Q', sku_special_items_count_dict)
         sku_special_items_count_dict = self.edit_dict_for_gof_deal(sku_special_items_count_dict['F'], 3, 'F', sku_special_items_count_dict)
         sku_special_items_count_dict = self.edit_dict_for_gof_deal(sku_special_items_count_dict['N'], 3, 'M', sku_special_items_count_dict)
@@ -125,6 +125,7 @@ class CheckoutSolution:
     
 
 CheckoutSolution().checkout(['NNNM'])
+
 
 
 
