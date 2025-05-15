@@ -31,7 +31,8 @@ class CheckoutSolution:
         if amount == 0:
             return dict_result
         free_items_amount = amount // offer_amount
-        return dict_result[free_item] - free_items_amount
+        dict_result[free_item]= dict_result[free_item] - free_items_amount
+        return dict_result
 
     
     def get_value_for_special_offers(self, special_value: int, offer_amount: int, normal_value: int, amount: int) -> int:
@@ -46,7 +47,7 @@ class CheckoutSolution:
 
 
         
-CheckoutSolution().checkout('ABCD')
+CheckoutSolution().checkout('EEB')
 
 
 
