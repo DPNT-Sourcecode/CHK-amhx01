@@ -7,6 +7,7 @@ class CheckoutSolution:
             sku_count_dict = {
                 'A': 0,
                 'B': 0,
+                'E': 0,
             }
             total_value = 0
             for sku in skus:
@@ -34,6 +35,7 @@ class CheckoutSolution:
 
 
         
+
 
 
 
