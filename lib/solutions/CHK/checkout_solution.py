@@ -115,7 +115,6 @@ class CheckoutSolution:
     
     def price_combo_letters(self, combo_dict: dict, price_combo_letter_dict_values: dict):
 
-        counts = {letter: input_string.count(letter) for letter in letter_values}
         total_letters = 0
         for letter, count in combo_dict.items():
             total_letters += count
@@ -127,16 +126,16 @@ class CheckoutSolution:
         for num in range(num_groups):
             group = []
             for letter in sorted_letters:
-                while counts[letter] > 0 and len(group) < 3:
+                while combo_dict[letter] > 0 and len(group) < 3:
                     group.append(letter)
-                    counts[letter] -= 1
+                    combo_dict[letter] -= 1
                 if len(group) == 3:
                     break
             total += 45  # Add combo price
 
         # Add remaining letters at their individual prices
-        for letter, count in counts.items():
-            total += count * letter_values[letter]
+        for letter, count in combo_dict.items():
+            total += count * price_combo_letter_dict_values[letter]
 
         return total
     
@@ -149,7 +148,7 @@ class CheckoutSolution:
             if sku in sku_special_items_count_dict:
                 sku_special_items_count_dict[sku] +=1
             if sku in combo_count_letter_dict:
-                combo_count_letter_dict +=1
+                combo_count_letter_dict[sku] +=1
 
         
         return {'special_dict': sku_special_items_count_dict, 'combo_dict': combo_count_letter_dict}, total_value
@@ -172,7 +171,4 @@ class CheckoutSolution:
         return total
     
 
-CheckoutSolution().checkout(['NNNM'])
-
-
-
+CheckoutSolution().checkout(['STX'])
