@@ -27,6 +27,9 @@ class CheckoutSolution:
             m_pricing_rules = {
                 1: 15
             }
+            n_pricing_rules = {
+                1: 40
+            }
             p_pricing_rules = {
                 1: 50,
                 5: 200
@@ -52,14 +55,17 @@ class CheckoutSolution:
                 'B': 0,
                 'E': 0,
                 'F': 0,
+                'H': 0,
+                'K': 0,
                 'M': 0,
+                'N': 0,
                 'P': 0,
                 'Q': 0,
                 'R': 0,
                 'U': 0,
                 'V': 0,
             }
-            standard_items = {'C':20, 'D': 15, 'E': 40, 'G': 20, 'I': 35, 'J': 60,'L': 90, 'N': 40, 'O': 10, 'S': 30, 'T': 20, 'W': 20, 'X': 90, 'Y': 10, 'Z': 50}
+            standard_items = {'C':20, 'D': 15, 'E': 40, 'G': 20, 'I': 35, 'J': 60,'L': 90, 'O': 10, 'S': 30, 'T': 20, 'W': 20, 'X': 90, 'Y': 10, 'Z': 50}
             total_value = 0
             if type(skus) == list:
                 for string in skus:
@@ -75,6 +81,8 @@ class CheckoutSolution:
         sku_special_items_count_dict = self.edit_dict_for_gof_deal(sku_special_items_count_dict['F'], 3, 'F', sku_special_items_count_dict)
         sku_special_items_count_dict = self.edit_dict_for_gof_deal(sku_special_items_count_dict['N'], 3, 'M', sku_special_items_count_dict)
         sku_special_items_count_dict = self.edit_dict_for_gof_deal(sku_special_items_count_dict['E'], 2, 'B', sku_special_items_count_dict)
+        total_value += self.get_value_for_special_offers(sku_special_items_count_dict['R'], r_pricing_rules)
+        total_value += self.get_value_for_special_offers(sku_special_items_count_dict['N'], n_pricing_rules)
         total_value += self.get_value_for_special_offers(sku_special_items_count_dict['M'], m_pricing_rules)
         total_value += self.get_value_for_special_offers(sku_special_items_count_dict['F'], f_pricing_rules)
         total_value += self.get_value_for_special_offers(sku_special_items_count_dict['U'], u_pricing_rules)

@@ -40,3 +40,6 @@ class TestCheckout():
 
     def test_threeN_get_one_M_free(self):
         assert CheckoutSolution().checkout(['NNNM']) == 120
+    
+    def test_two_k_150(self):
+        assert CheckoutSolution().checkout('KK') == 150
