@@ -16,7 +16,7 @@ class CheckoutSolution:
                 if sku in sku_special_items_count_dict:
                     sku_special_items_count_dict[sku] +=1
         except Exception as e:
-            return e
+            return -1
         
         sku_special_items_count_dict = self.edit_dict_for_gof_deal(sku_special_items_count_dict['E'], 2, 'B', sku_special_items_count_dict)
         total_value += self.get_value_for_special_offers(130, 3, 50, sku_special_items_count_dict['A'])
@@ -25,6 +25,8 @@ class CheckoutSolution:
         return total_value
     
     def edit_dict_for_gof_deal(self, amount:int, offer_amount:int, free_item: str, dict_result: dict)->dict:
+        if amount == 0:
+            return dict_result
         free_items_amount = amount // offer_amount
         return dict_result[free_item] - free_items_amount
 
@@ -41,7 +43,7 @@ class CheckoutSolution:
 
 
         
-#CheckoutSolution().checkout('a')
+CheckoutSolution().checkout('1')
 
 
 
