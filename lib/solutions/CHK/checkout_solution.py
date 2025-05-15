@@ -65,13 +65,27 @@ class CheckoutSolution:
                 'U': 0,
                 'V': 0,
             }
-            standard_items = {'C':20, 'D': 15, 'E': 40, 'G': 20, 'I': 35, 'J': 60,'L': 90, 'O': 10, 'S': 30, 'T': 20, 'W': 20, 'X': 90, 'Y': 10, 'Z': 50}
+            price_combo_letter_dict_values = {
+                'S': 20,
+                'T': 20,
+                'X': 17,
+                'Y': 20,
+                'Z': 21,
+            }
+            combo_letter_count_dict = {
+                'S': 0,
+                'T': 0,
+                'X': 0,
+                'Y': 0,
+                'Z': 0, 
+            }
+            standard_items = {'C':20, 'D': 15, 'E': 40, 'G': 20, 'I': 35, 'J': 60,'L': 90, 'O': 10, 'W': 20}
             total_value = 0
             if type(skus) == list:
                 for string in skus:
-                    sku_special_items_count_dict, total_value = self.sort_data_from_string(string, valid_items, standard_items, sku_special_items_count_dict, total_value)
+                    sku_special_items_count_dict, total_value = self.sort_data_from_string(string, valid_items, standard_items, sku_special_items_count_dict, combo_letter_count_dict, total_value)
             else: 
-                sku_special_items_count_dict, total_value = self.sort_data_from_string(skus, valid_items, standard_items, sku_special_items_count_dict, total_value)
+                sku_special_items_count_dict, total_value = self.sort_data_from_string(skus, valid_items, standard_items, sku_special_items_count_dict, combo_letter_count_dict, total_value)
 
         except Exception as e:
             return -1
@@ -96,7 +110,7 @@ class CheckoutSolution:
 
         return total_value
     
-    def sort_data_from_string(self, skus:str, valid_items: list, standard_items: dict, sku_special_items_count_dict: dict, total_value: int):
+    def sort_data_from_string(self, skus:str, valid_items: list, standard_items: dict, sku_special_items_count_dict: dict, combo_count_letter_dict: dict, total_value: int):
         for sku in skus:
             if sku not in valid_items:
                 return -1
@@ -104,6 +118,8 @@ class CheckoutSolution:
                 total_value += standard_items[sku]
             if sku in sku_special_items_count_dict:
                 sku_special_items_count_dict[sku] +=1
+            if sku in combo_count_letter_dict:
+                combo_count_letter_dict +=1
         return sku_special_items_count_dict, total_value
     
     def edit_dict_for_gof_deal(self, amount:int, offer_amount:int, free_item: str, dict_result: dict)->dict:
