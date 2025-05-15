@@ -15,18 +15,13 @@ class CheckoutSolution:
                 total_value += 15
             else:
                 sku_count_dict[sku] +=1
-        
-        if sku_count_dict['A'] <3:
-            total_value += sku_count_dict['A'] * 50
-        else:
-            a_offer_value = sku_count_dict['A'] // 3 * 130
-            a_normal_value = sku_count_dict['A'] % 3 * 50
-            total_value = total_value + a_normal_value + a_offer_value
-        
+
+        total_value += self.get_value_for_special_offers(130, 3, 50, sku_count_dict['A'])
+        total_value+= self.get_value_for_special_offers(45, 2, 30, sku_count_dict['B'])
 
         return total_value
     
-    def get_value_for_special_offers(special_value: int, offer_amount: int, normal_value: int, amount: int) -> int:
+    def get_value_for_special_offers(self, special_value: int, offer_amount: int, normal_value: int, amount: int) -> int:
         if amount < offer_amount:
             return amount * normal_value
         else:
@@ -36,6 +31,7 @@ class CheckoutSolution:
 
 
         
+
 
 
 
