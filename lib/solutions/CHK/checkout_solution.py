@@ -15,11 +15,16 @@ class CheckoutSolution:
                 total_value += 15
             else:
                 sku_count_dict[sku] +=1
-            
+        
+        if sku_count_dict['A'] <3:
+            a_value = sku_count_dict['A'] * 50
+        else:
+            sku_count_dict['A'] % 3
             
 
 
         
+
 
 
 
