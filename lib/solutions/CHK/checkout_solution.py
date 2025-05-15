@@ -35,6 +35,9 @@ class CheckoutSolution:
                 1: 30,
                 3: 80
             }
+            r_pricing_rules = {
+                1: 50
+            }
             u_pricing_rules = {
                 1: 40
             }
@@ -52,10 +55,11 @@ class CheckoutSolution:
                 'M': 0,
                 'P': 0,
                 'Q': 0,
+                'R': 0,
                 'U': 0,
                 'V': 0,
             }
-            standard_items = {'C':20, 'D': 15, 'E': 40, 'G': 20, 'I': 35, 'J': 60,'L': 90, 'N': 40, 'O': 10, 'R': 50, 'S': 30, 'T': 20, 'W': 20, 'X': 90, 'Y': 10, 'Z': 50}
+            standard_items = {'C':20, 'D': 15, 'E': 40, 'G': 20, 'I': 35, 'J': 60,'L': 90, 'N': 40, 'O': 10, 'S': 30, 'T': 20, 'W': 20, 'X': 90, 'Y': 10, 'Z': 50}
             total_value = 0
             if type(skus) == list:
                 for string in skus:
@@ -112,7 +116,7 @@ class CheckoutSolution:
         return total
     
 
-CheckoutSolution().checkout(['FFF'])
+CheckoutSolution().checkout(['NNNM'])
 
 
 

@@ -37,3 +37,6 @@ class TestCheckout():
     
     def test_checkout_with_list_containing_string_and_3fs_one_free(self):
         assert CheckoutSolution().checkout(['FFF']) == 20
+
+    def test_threeN_get_one_M_free(self):
+        assert CheckoutSolution().checkout(['NNNM']) == 120
